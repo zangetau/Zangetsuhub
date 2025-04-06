@@ -1,3 +1,8 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zangetau/Zangetsuhub/main/ui.lua"))()
+
+
+
+
 -- Zangetsu Hub V1 Loader
 repeat wait() until game:IsLoaded()
 local player = game.Players.LocalPlayer
