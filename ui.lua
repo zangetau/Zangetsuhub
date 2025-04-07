@@ -1,36 +1,34 @@
--- UI START
-local player = game.Players.LocalPlayer
-local plrGui = player:WaitForChild("PlayerGui")
+-- ui.lua (basic version with Zangetsu image and menu)
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
 
-local ScreenGui = Instance.new("ScreenGui", plrGui)
-ScreenGui.Name = "ZangetsuHub"
+local screenGui = Instance.new("ScreenGui", PlayerGui)
+screenGui.Name = "ZangetsuHub"
 
-local OpenButton = Instance.new("ImageButton", ScreenGui)
-OpenButton.Size = UDim2.new(0, 60, 0, 60)
-OpenButton.Position = UDim2.new(0, 10, 0, 10)
-OpenButton.Image = "https://raw.githubusercontent.com/zangetau/Zangetsuhub/main/zangetsu.png"
-OpenButton.Name = "OpenButton"
-OpenButton.BackgroundTransparency = 1
+local openButton = Instance.new("ImageButton")
+openButton.Name = "ZangetsuOpen"
+openButton.Size = UDim2.new(0, 60, 0, 60)
+openButton.Position = UDim2.new(0, 20, 0.5, -30)
+openButton.Image = "rbxassetid://118751715397219"
+openButton.Parent = screenGui
 
-local MainFrame = Instance.new("Frame", ScreenGui)
-MainFrame.Size = UDim2.new(0, 400, 0, 300)
-MainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
-MainFrame.BackgroundColor3 = Color3.new(0.05, 0.05, 0.05)
-MainFrame.Visible = false
-MainFrame.Name = "MainMenu"
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 400, 0, 300)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+mainFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+mainFrame.Visible = false
+mainFrame.Parent = screenGui
 
-local UICorner = Instance.new("UICorner", MainFrame)
-UICorner.CornerRadius = UDim.new(0, 12)
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 50)
+title.BackgroundTransparency = 1
+title.Text = "Zangetsu Hub V1"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.Font = Enum.Font.GothamBold
+title.TextScaled = true
+title.Parent = mainFrame
 
-local Title = Instance.new("TextLabel", MainFrame)
-Title.Size = UDim2.new(1, 0, 0, 50)
-Title.Text = "Zangetsu Hub V1"
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.BackgroundTransparency = 1
-Title.Font = Enum.Font.GothamBold
-Title.TextSize = 26
-
--- Toggle Menu
-OpenButton.MouseButton1Click:Connect(function()
-	MainFrame.Visible = not MainFrame.Visible
+openButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = not mainFrame.Visible
 end)
